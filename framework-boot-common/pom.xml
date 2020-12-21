@@ -7,10 +7,13 @@
         <groupId>com.farerboy</groupId>
         <version>0.0.1</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>framework-boot-core</artifactId>
-    <packaging>jar</packaging>
-    <name>framework-boot-core</name>
 
+    <artifactId>framework-boot-common</artifactId>
+    <packaging>jar</packaging>
+    <name>framework-boot-common</name>
+
+    <dependencies>
+
+    </dependencies>
 </project>
