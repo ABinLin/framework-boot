@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.farerboy</groupId>
+    <artifactId>framework-boot</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+    <name>framework-boot</name>
+
+    <modules>
+        <module>framework-boot-core</module>
+    </modules>
+
+    <properties>
+        <spring.boot.parent>2.1.3.RELEASE</spring.boot.parent>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <boot.web.verison>2.1.5.RELEASE</boot.web.verison>
+        <swagger2.verison>2.9.2</swagger2.verison>
+        <fastjson.version>1.2.45</fastjson.version>
+        <spring.boot.parent>2.1.3.RELEASE</spring.boot.parent>
+        <baomidou.mybatisplus.verison>3.0.7.1</baomidou.mybatisplus.verison>
+        <mysql-connector.version>5.1.38</mysql-connector.version>
+        <druid.version>1.1.13</druid.version>
+        <mybatis-spring-boot>2.0.1</mybatis-spring-boot>
+        <mybatis.generator.core>1.3.2</mybatis.generator.core>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
