@@ -1,6 +1,6 @@
-package com.farerboy.framework.boot.core.dto;
+package com.framework.boot.common.dto;
 
-import com.farerboy.framework.boot.core.enums.ResponseCode;
+import com.framework.boot.common.enums.ResponseCode;
 
 import java.io.Serializable;
 

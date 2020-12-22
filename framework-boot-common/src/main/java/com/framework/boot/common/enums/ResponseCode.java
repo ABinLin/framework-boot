@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.core.enums;
+package com.framework.boot.common.enums;
 
 /**
  *@Description 请求放回编码
