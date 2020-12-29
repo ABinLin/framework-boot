@@ -6,13 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 强制返回值不加密
+ * 返回值加密
  *
- * @Author linjb
- * @Date 2020/5/27 0027 20:46
- * @Version 1.0
+ * @author farerboy
+ * @date 2020/12/26 7:03 下午
  */
+
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UnencryptedResponse {
+public @interface EncryptedResponse {
+
+    boolean value() default true;
 }

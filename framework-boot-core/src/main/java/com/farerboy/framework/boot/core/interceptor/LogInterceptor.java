@@ -15,9 +15,9 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
- * @Description:
- * @Author: linjb
- * @Date: 2019/6/13 0013 14:47
+ * TODO description
+ * @author farerboy
+ * @date 2020/12/29 7:41 下午
  */
 public class LogInterceptor implements HandlerInterceptor {
 

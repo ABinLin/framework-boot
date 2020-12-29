@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * @Description 预定义常量加载处理器
- * @Author linjb
+ * @Author farerboy
  * @Date 2019/7/2 0002 15:01
  * @Version 1.0
  */

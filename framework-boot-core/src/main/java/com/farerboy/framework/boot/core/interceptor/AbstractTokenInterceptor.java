@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @Description token 权限抽象拦截器
- * @Author linjb
- * @Date 2019/10/27 0027 16:15
- * @Version 1.0
+ * token 权限抽象拦截器
+ * @author farerboy
+ * @date 2020/12/29 7:40 下午
  */
 public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
 

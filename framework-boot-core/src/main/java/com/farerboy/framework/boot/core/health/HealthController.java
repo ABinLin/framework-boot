@@ -2,17 +2,15 @@ package com.farerboy.framework.boot.core.health;
 
 import com.alibaba.fastjson.JSONObject;
 import com.farerboy.framework.boot.core.annotation.OpenRouting;
-import com.farerboy.framework.boot.core.annotation.UnencryptedResponse;
 import com.framework.boot.common.dto.ServerResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2020/3/30 0030 11:19
- * @Version 1.0
+ * 监控检测接口
+ * @author farerboy
+ * @date 2020/12/29 7:39 下午
  */
 @RestController
 public class HealthController {
@@ -23,7 +21,6 @@ public class HealthController {
     @Value("${yiyu.app.build.time:null}")
     private String appBuildTime;
 
-    @UnencryptedResponse
     @OpenRouting
     @GetMapping("health")
     public ServerResponse health(){

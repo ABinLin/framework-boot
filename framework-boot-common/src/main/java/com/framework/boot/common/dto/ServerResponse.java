@@ -1,48 +1,164 @@
 package com.framework.boot.common.dto;
 
+import com.framework.boot.common.Transformation;
 import com.framework.boot.common.enums.ResponseCode;
-
-import java.io.Serializable;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description 通用的数据响应对象
- * @Author linjb
+ * @Author farerboy
  * @Date 2019/7/2 0002 15:01
  * @Version 1.0
  */
-public class ServerResponse<T> implements Serializable {
+public class ServerResponse<T> implements Transformation {
 
-	private static final long serialVersionUID = 7026815170601873950L;
-	private int status;
+	private String code;
     private String msg;
+    private boolean success = true;
     private T data;
+    /**
+     * 响应头，用于存放扩展信息
+     */
+    private Map<String, Object> headers;
 
-    public ServerResponse(int status) {
-        this.status = status;
+    private ServerResponse(boolean success) {
+        this.success = success;
     }
 
-    private ServerResponse(int status, T data) {
-        this.status = status;
+    private ServerResponse(boolean success, String msg) {
+        this.success = success;
+        this.msg = msg;
+    }
+
+    private ServerResponse(boolean success, String code, String msg) {
+        this.success = success;
+        this.msg = msg;
+        this.code = code;
+    }
+
+    private ServerResponse(boolean success, T data) {
+        this.success = success;
         this.data = data;
     }
 
-    private ServerResponse(int status, String msg, T data) {
-        this.status = status;
+    private ServerResponse(boolean success, String msg, T data) {
+        this.success = success;
         this.msg = msg;
         this.data = data;
     }
 
-    private ServerResponse(int status, String msg) {
-        this.status = status;
+    private ServerResponse(boolean success, String code, String msg, T data) {
+        this.success = success;
         this.msg = msg;
+        this.data = data;
+        this.code = code;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    private ServerResponse(boolean success, ResponseCode responseCode){
+        this.success = success;
+        this.code = responseCode.getCode();
+        this.msg = responseCode.getCode();
+    }
+    public String getCode() {
+        return code;
     }
 
-    public int getStatus() {
-        return this.status;
+    public static <T> ServerResponse<T> createBy(boolean success,String code,String msg,T data){
+        return new ServerResponse<>(success,code,msg,data);
+    }
+
+    public static <T> ServerResponse<T> createBySuccess() {
+        return new ServerResponse<T>(true,ResponseCode.SUCCESS);
+    }
+
+    public static <T> ServerResponse<T> createBySuccess(ResponseCode responseCode) {
+        return new ServerResponse<T>(true,responseCode);
+    }
+
+    public static <T> ServerResponse<T> createBySuccessMessage(String msg) {
+        return new ServerResponse<T>(true,ResponseCode.SUCCESS.getCode(),msg);
+    }
+
+    public static <T> ServerResponse<T> createBySuccess(T data) {
+        return new ServerResponse<T>(true, data);
+    }
+
+    public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
+        return new ServerResponse<T>(true,msg,data);
+    }
+
+    public static <T> ServerResponse<T> createByError() {
+        return new ServerResponse<T>(false,ResponseCode.SYSTEM_ERROR);
+    }
+
+    public static <T> ServerResponse<T> createByError(ResponseCode responseCode) {
+        return new ServerResponse<T>(false,responseCode);
+    }
+
+    public static <T> ServerResponse<T> createByErrorMessage(String msg) {
+        return new ServerResponse<T>(false, ResponseCode.SYSTEM_ERROR.getCode(), msg);
+    }
+
+    public static <T> ServerResponse<T> createByErrorCodeMessage(String code, String msg) {
+        return new ServerResponse<T>(false,code, msg);
+    }
+
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public Map<String, Object> getHeaders() {
+        return headers;
+    }
+
+    public Object getHeader(String name){
+        if (this.headers == null || this.headers.size() == 0){
+            return null;
+        }
+        return this.headers.get(name);
+    }
+
+    public void setHeaders(Map<String, Object> headers) {
+        this.headers = headers;
+    }
+
+    public void setHeader(String name,Object value){
+        if(this.headers == null){
+            synchronized (ServerResponse.class){
+                if(this.headers == null){
+                    this.headers = new HashMap<>(8);
+                }
+            }
+        }
+        this.headers.put(name,value);
+    }
+
+    public void setErrorHeader(String error){
+        setHeader("error",error);
+    }
+
+    public void setErrorStackTrace(String errorStackTrace){
+        setHeader("error_stack_trace",errorStackTrace);
+    }
+    public void setErrorHeader(Throwable e){
+        setErrorHeader(e.getMessage());
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw, true);
+        e.printStackTrace(pw);
+        String errorStackTrace = sw.getBuffer().toString();
+        setErrorStackTrace(errorStackTrace);
     }
 
     public void setData(T data) {
@@ -61,48 +177,4 @@ public class ServerResponse<T> implements Serializable {
         this.msg = msg;
     }
 
-    public static <T> ServerResponse<T> createBySuccess() {
-        return new ServerResponse<T>(ResponseCode.Success.getStatus(),ResponseCode.Success.getMsg());
-    }
-
-    public static <T> ServerResponse<T> createBySuccessMessage(String msg) {
-        return new ServerResponse<T>(ResponseCode.Success.getStatus(), msg);
-    }
-
-    public static <T> ServerResponse<T> createBySuccessNoData(String msg) {
-        return new ServerResponse<T>(ResponseCode.NoData.getStatus(), msg);
-    }
-
-    public static <T> ServerResponse<T> createBySuccessNoData() {
-        return new ServerResponse<T>(ResponseCode.NoData.getStatus(),ResponseCode.NoData.getMsg());
-    }
-
-    public static <T> ServerResponse<T> createBySuccess(T data) {
-        return new ServerResponse<T>(ResponseCode.Success.getStatus(), data);
-    }
-
-    public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
-        return new ServerResponse<T>(ResponseCode.Success.getStatus(), msg, data);
-    }
-
-    public static <T> ServerResponse<T> createByError() {
-        return new ServerResponse<T>(ResponseCode.Error.getStatus(), ResponseCode.Error.getMsg());
-    }
-
-    public static <T> ServerResponse<T> createByErrorMessage(String errorMessage) {
-        return new ServerResponse<T>(ResponseCode.Error.getStatus(), errorMessage);
-    }
-
-    public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
-        return new ServerResponse<T>(errorCode, errorMessage);
-    }
-
-    @Override
-    public String toString() {
-        return "ServerResponse{" +
-                "status=" + status +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                '}';
-    }
 }

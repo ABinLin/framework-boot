@@ -199,11 +199,11 @@ public class SignUtil {
      * @return java.lang.String
      */
     public String encodeMD5ForAESAddSalt(String content,String salt){
-        try {
+        /*try {
             return MD5Util.getInstance().encode(AESUtil.encrypt(content,salt));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return null;
     }
 

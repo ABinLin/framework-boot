@@ -3,7 +3,7 @@ package com.framework.boot.common.exception;
 /**
  * 自定义基础异常
  *
- * @author linjianbin
+ * @author farerboy
  * @date 2020/12/21 10:06 下午
  */
 public class BaseException extends RuntimeException{
@@ -18,7 +18,7 @@ public class BaseException extends RuntimeException{
     }
 
     public BaseException(String msg, Throwable e) {
-        super(msg, e);
+        super(e);
         this.msg = msg;
     }
 
@@ -29,7 +29,7 @@ public class BaseException extends RuntimeException{
     }
 
     public BaseException(String code, String msg, Throwable e) {
-        super(msg, e);
+        super(e);
         this.msg = msg;
         this.code = code;
     }

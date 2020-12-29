@@ -1,6 +1,6 @@
 package com.farerboy.framework.boot.core.interceptor;
 
-import com.farerboy.framework.boot.util.encryption.AESUtil;
+import com.farerboy.framework.boot.util.encryption.AesUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -31,7 +31,7 @@ public class SignInterceptor implements ClientHttpRequestInterceptor {
             HttpHeaders headers = request.getHeaders();
             Long timeStamp = System.currentTimeMillis()+2000;
             try {
-                headers.add("sign", AESUtil.encryptCBC(timeStamp.toString(), key));
+                headers.add("sign", AesUtil.encryptCBC(timeStamp.toString(), key));
             } catch (Exception e) {
                 e.printStackTrace();
             }
