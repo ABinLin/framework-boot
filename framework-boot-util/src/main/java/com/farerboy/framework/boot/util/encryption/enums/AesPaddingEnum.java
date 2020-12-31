@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.util.encryption;
+package com.farerboy.framework.boot.util.encryption.enums;
 
 /**
  * AES 加密填充枚举

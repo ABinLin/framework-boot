@@ -8,6 +8,6 @@ package com.framework.boot.common.constant;
  */
 public class Constant {
 
-    public static final String CHARSET_UTF_8 = "utf-8";
+    public static final String CHARSET_UTF_8 = "UTF-8";
 
 }

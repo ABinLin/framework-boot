@@ -40,7 +40,8 @@ public enum ResponseCode {
 
     TYPE_MISMATCH_EXCEPTION("TYPE_MISMATCH_EXCEPTION","参数类型不匹配"),
 
-    RESPONSE_ENCRYPT_ERROR("RESPONSE_ENCRYPT_ERROR","返回数据加密异常")
+    RESPONSE_ENCRYPT_ERROR("RESPONSE_ENCRYPT_ERROR","返回数据加密异常"),
+
     ;
 
     private final String code;

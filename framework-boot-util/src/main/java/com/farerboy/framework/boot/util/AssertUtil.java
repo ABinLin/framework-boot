@@ -29,6 +29,11 @@ public class AssertUtil {
         }
     }
 
+    public static void notEmpty(byte[] byteArray,String message){
+        if (byteArray == null || byteArray.length == 0){
+            throw new IllegalArgumentException(message);
+        }
+    }
     public static void notEmpty(Map map, String message) {
         if (map == null || map.isEmpty()) {
             throw new IllegalArgumentException(message);

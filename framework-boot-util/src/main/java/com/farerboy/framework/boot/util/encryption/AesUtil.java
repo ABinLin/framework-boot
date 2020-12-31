@@ -1,6 +1,8 @@
 package com.farerboy.framework.boot.util.encryption;
 
 import com.farerboy.framework.boot.util.AssertUtil;
+import com.farerboy.framework.boot.util.encryption.enums.AesModeEnum;
+import com.farerboy.framework.boot.util.encryption.enums.AesPaddingEnum;
 import com.framework.boot.common.constant.Constant;
 import com.framework.boot.common.exception.BaseException;
 import javax.crypto.Cipher;
@@ -41,7 +43,7 @@ public class AesUtil {
         return keyBytes;
     }
 
-    private static Cipher getCipherInstance(AesModeEnum aesModeEnum,AesPaddingEnum aesPaddingEnum,boolean isEncrypt,String iv,String key) throws NoSuchPaddingException, NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, InvalidAlgorithmParameterException {
+    private static Cipher getCipherInstance(AesModeEnum aesModeEnum, AesPaddingEnum aesPaddingEnum, boolean isEncrypt, String iv, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, InvalidAlgorithmParameterException {
         if(AesModeEnum.CBC.getMode().equals(aesModeEnum.getMode())){
             AssertUtil.notBlank(iv,"IV offset can not be null in CBC mode !");
         }
