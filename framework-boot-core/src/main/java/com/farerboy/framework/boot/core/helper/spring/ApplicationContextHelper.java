@@ -26,7 +26,7 @@ public class ApplicationContextHelper implements ApplicationContextAware {
         if(ApplicationContextHelper.applicationContext == null) {
             ApplicationContextHelper.applicationContext = applicationContext;
         }
-        logger.debug("全局 applicationContext = "+ApplicationContextHelper.applicationContext);
+        logger.info("ApplicationContextHelper.setApplicationContext({})", ApplicationContextHelper.applicationContext);
     }
 
     public <T> Map<String, T> getBeansOfType(Class<T> clazz){

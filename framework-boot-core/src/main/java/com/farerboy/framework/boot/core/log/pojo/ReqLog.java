@@ -18,7 +18,6 @@ public class ReqLog {
 	private Integer reqFlag;// 请求状态 成功，失败
 	private String pReqLogId;// 父级请求Id
 	private String reqException;// 异常信息
-	private String sysCode; //系统标志
 	public String getReqLogId() {
 		return reqLogId;
 	}
@@ -111,12 +110,6 @@ public class ReqLog {
 	public void setSystemFlag(String systemFlag) {
 		this.systemFlag = systemFlag;
 	}
-	public String getSysCode() {
-		return sysCode;
-	}
-	public void setSysCode(String sysCode) {
-		this.sysCode = sysCode;
-	}
 
 	@Override
 	public String toString() {
@@ -135,7 +128,6 @@ public class ReqLog {
 				", reqFlag=" + reqFlag +
 				", pReqLogId='" + pReqLogId + '\'' +
 				", reqException='" + reqException + '\'' +
-				", sysCode='" + sysCode + '\'' +
 				'}';
 	}
 }

@@ -1,8 +1,6 @@
 package com.farerboy.framework.boot.core.interceptor;
 
 import com.farerboy.framework.boot.core.annotation.OpenRouting;
-import com.framework.boot.common.enums.ResponseCode;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2020/12/29 7:40 下午
  */
 public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
-
-    @Value("${server.servlet.context-path}")
-    private String projectPath;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -31,19 +26,19 @@ public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
         if (openRouting != null) {
             return true;
         }
-        String wxMiniProgram = request.getHeader("wxMiniProgramToken");
-        if( null != wxMiniProgram ){
-            return doHandle(request,response,handler);
-        }
-        String token = request.getHeader("token");
-        if( null == token || "".equals(token) ){
-            response.setStatus(ResponseCode.InvalidToken.getStatus());
-            return false;
-        }
         //公共
         return doHandle(request,response,handler);
     }
 
-    public abstract boolean doHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+    /**
+     * 执行token拦截器具体业务
+     * @author farerboy
+     * @date 2021/1/5 8:49 下午
+     * @param request
+     * @param response
+     * @param handler
+     * @return boolean
+     */
+    public abstract boolean doHandle(HttpServletRequest request, HttpServletResponse response, Object handler);
 
 }

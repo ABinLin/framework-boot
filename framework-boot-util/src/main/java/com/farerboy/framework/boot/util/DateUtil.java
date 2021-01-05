@@ -8,9 +8,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * @Description: 日期工具
- * @Author: linjb
- * @Date: 2019/7/2 0002 11:01
+ * 日期工具
+ *
+ * @author farerboy
+ * @date 2020/12/29 8:44 下午
  */
 public class DateUtil {
 	public static final String C_DATE_DIVISION = "-";

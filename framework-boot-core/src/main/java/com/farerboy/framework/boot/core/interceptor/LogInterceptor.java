@@ -3,10 +3,13 @@ package com.farerboy.framework.boot.core.interceptor;
 import com.alibaba.fastjson.JSONObject;
 import com.farerboy.framework.boot.core.log.Method;
 import com.farerboy.framework.boot.core.log.pojo.ReqLog;
+import com.farerboy.framework.boot.core.properties.ProjectProperties;
+import com.farerboy.framework.boot.core.properties.SwaggerProperties;
 import com.farerboy.framework.boot.core.util.HttpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +18,7 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
- * TODO description
+ * 日志拦截器
  * @author farerboy
  * @date 2020/12/29 7:41 下午
  */
@@ -23,23 +26,24 @@ public class LogInterceptor implements HandlerInterceptor {
 
     private Logger logger=LoggerFactory.getLogger(LogInterceptor.class);
 
-//    @Resource
-//    private ClassLocator classLocator;
-
-    @Value("${yiyu.log.req.notice:system.monitor.req.log.notice}")
-    private String logReqNotice;
-
-    @Value("${spring.application.name:yiyu-application}")
+    @Value("${spring.application.name:farerboy-application}")
     private String application;
 
-    @Value("${spring.application.name:yiyu-application}")
-    private String sysCode;
+    @Autowired
+    private ProjectProperties projectProperties;
+
+    @Autowired
+    private SwaggerProperties swaggerProperties;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String systemFlag = projectProperties.getName();
+        if(StringUtils.isBlank(systemFlag)){
+            systemFlag = application;
+        }
         // 创建请求日志对象
         ReqLog reqLog=new ReqLog();
-        reqLog.setSystemFlag(application);
+        reqLog.setSystemFlag(systemFlag);
         String reqLogId=UUID.randomUUID().toString().replaceAll("-", "");
         reqLog.setReqLogId(reqLogId);
         reqLog.setStartTime(new Timestamp(System.currentTimeMillis()));
@@ -68,25 +72,16 @@ public class LogInterceptor implements HandlerInterceptor {
         ReqLog reqLog=(ReqLog)request.getAttribute("reqLog");
         long start=reqLog.getStartTime().getTime();
         response.setHeader("useTime",reqLog.getUseTime());
-        reqLog.setSysCode(sysCode);
         long end=System.currentTimeMillis();
         reqLog.setEndTime(new Timestamp(end));
         reqLog.setUseTime(end-start+"ms");
-        if(null != reqLog.getReqException()){
-            reqLog.setReqFlag(0);
-            logger.error(JSONObject.toJSONString(reqLog));
-        }else {
+        if(reqLog.getReqFlag() == null){
             reqLog.setReqFlag(1);
-            logger.debug(JSONObject.toJSONString(reqLog));
         }
-        /*try {
-            Object object = classLocator.getBean("activeProductManager");
-            if(object != null){
-                java.lang.reflect.Method method =object.getClass().getMethod("sendQueue",String.class,Object.class);
-                method.invoke(object,logReqNotice,reqLog);
-            }
-        }catch (Exception e){
-
-        }*/
+        if(1 == reqLog.getReqFlag()){
+            logger.info(JSONObject.toJSONString(reqLog));
+        }else {
+            logger.error(JSONObject.toJSONString(reqLog));
+        }
     }
 }

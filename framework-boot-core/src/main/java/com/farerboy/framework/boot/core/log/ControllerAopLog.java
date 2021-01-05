@@ -24,7 +24,8 @@ public class ControllerAopLog {
     private Logger logger=LoggerFactory.getLogger(getClass());
     private ReqLog reqLog;
 
-    @Pointcut("execution(* com.yiyu..*Controller.*(..))")
+//    @Pointcut("execution(* com.yiyu..*Controller.*(..))") // 包
+    @Around("@within(org.springframework.web.bind.annotation.RestController)")
 	public void executeService(){}
 	
 	@Before(value = "executeService()")
@@ -46,7 +47,6 @@ public class ControllerAopLog {
             }catch (Exception e){
                 //  入参可能包含request
                 this.reqLog.setReqParameter(args.toString());
-
             }
         }
 	}

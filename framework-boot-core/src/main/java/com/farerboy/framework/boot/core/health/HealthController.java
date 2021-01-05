@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
-    @Value("${yiyu.app.version:0.0.1}")
-    private String appVersion;
-
-    @Value("${yiyu.app.build.time:null}")
-    private String appBuildTime;
+//    @Value("${yiyu.app.version:0.0.1}")
+//    private String appVersion;
+//
+//    @Value("${yiyu.app.build.time:null}")
+//    private String appBuildTime;
 
     @OpenRouting
     @GetMapping("health")
     public ServerResponse health(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("version",appVersion);
-        jsonObject.put("buildTime",appBuildTime);
+//        jsonObject.put("version",appVersion);
+//        jsonObject.put("buildTime",appBuildTime);
         return ServerResponse.createBySuccess("OK",jsonObject);
     }
 }

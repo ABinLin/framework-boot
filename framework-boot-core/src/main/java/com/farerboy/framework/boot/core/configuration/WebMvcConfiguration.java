@@ -6,8 +6,9 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.farerboy.framework.boot.core.helper.spring.ApplicationContextHelper;
 import com.farerboy.framework.boot.core.interceptor.InterceptorOrder;
 import com.farerboy.framework.boot.core.interceptor.LogInterceptor;
+import com.farerboy.framework.boot.core.properties.RestLogProperties;
 import com.framework.boot.common.exception.BaseException;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,7 @@ import javax.annotation.Resource;
 import java.util.*;
 
 /**
- * TODO description
+ * web mvc 配置
  *
  * @author farerboy
  * @date 2020/12/22 11:26 上午
@@ -34,8 +35,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Resource
     private ApplicationContextHelper applicationContextHelper;
 
-    @Value("${yiyu.log.switch:true}")
-    private boolean yiyu_log_switch;
+    @Autowired
+    private RestLogProperties restLogProperties;
 
     private static List<String> excludePath = new ArrayList<>();
 
@@ -55,7 +56,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-        if(yiyu_log_switch){
+        if(restLogProperties.getEnable() != null && restLogProperties.getEnable()){
             registry.addInterceptor(logInterceptor()).addPathPatterns("/**")
                     .excludePathPatterns(excludePath);
         }
@@ -96,12 +97,11 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         return new LogInterceptor();
     }
 
+
     /**
-     * @Description 序列化
-     * @Date 2020/5/22 0022 17:44
-     * @Author linjb
-     * @param
-     * @return org.springframework.boot.autoconfigure.http.HttpMessageConverters
+     * 序列化
+     * @author farerboy
+     * @date 2021/1/5 8:39 下午
      */
     @Bean
     public HttpMessageConverters useConverters() {
@@ -121,7 +121,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         return new HttpMessageConverters(converter);
     }
 
-    @ConditionalOnExpression("${yiyu.cors.switch:false}")
+    @ConditionalOnExpression("${farerboy.rest.api.cross-enable:false}")
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();

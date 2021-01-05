@@ -3,7 +3,6 @@ package com.farerboy.framework.boot.core.advice;
 import com.alibaba.fastjson.JSON;
 import com.farerboy.framework.boot.core.annotation.EncryptedResponse;
 import com.farerboy.framework.boot.core.properties.ResponseEncryptedProperties;
-import com.farerboy.framework.boot.util.AssertUtil;
 import com.farerboy.framework.boot.util.encryption.AesUtil;
 import com.framework.boot.common.enums.ResponseCode;
 import com.framework.boot.common.exception.BaseException;
