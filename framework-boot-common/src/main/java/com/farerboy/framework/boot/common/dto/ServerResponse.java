@@ -1,7 +1,7 @@
-package com.framework.boot.common.dto;
+package com.farerboy.framework.boot.common.dto;
 
-import com.framework.boot.common.Transformation;
-import com.framework.boot.common.enums.ResponseCode;
+import com.farerboy.framework.boot.common.Transformation;
+import com.farerboy.framework.boot.common.enums.ResponseCode;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;

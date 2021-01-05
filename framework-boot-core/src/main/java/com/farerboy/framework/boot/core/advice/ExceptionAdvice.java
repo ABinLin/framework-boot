@@ -1,8 +1,8 @@
 package com.farerboy.framework.boot.core.advice;
 
-import com.framework.boot.common.dto.ServerResponse;
-import com.framework.boot.common.enums.ResponseCode;
-import com.framework.boot.common.exception.BaseException;
+import com.farerboy.framework.boot.common.dto.ServerResponse;
+import com.farerboy.framework.boot.common.enums.ResponseCode;
+import com.farerboy.framework.boot.common.exception.BaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;

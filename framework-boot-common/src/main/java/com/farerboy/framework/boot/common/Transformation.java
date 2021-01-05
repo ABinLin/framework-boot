@@ -1,4 +1,4 @@
-package com.framework.boot.common;
+package com.farerboy.framework.boot.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

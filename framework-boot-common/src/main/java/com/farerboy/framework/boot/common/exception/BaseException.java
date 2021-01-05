@@ -1,4 +1,4 @@
-package com.framework.boot.common.exception;
+package com.farerboy.framework.boot.common.exception;
 
 /**
  * 自定义基础异常

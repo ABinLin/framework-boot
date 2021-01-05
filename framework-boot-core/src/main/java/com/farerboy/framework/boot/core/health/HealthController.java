@@ -2,8 +2,7 @@ package com.farerboy.framework.boot.core.health;
 
 import com.alibaba.fastjson.JSONObject;
 import com.farerboy.framework.boot.core.annotation.OpenRouting;
-import com.framework.boot.common.dto.ServerResponse;
-import org.springframework.beans.factory.annotation.Value;
+import com.farerboy.framework.boot.common.dto.ServerResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

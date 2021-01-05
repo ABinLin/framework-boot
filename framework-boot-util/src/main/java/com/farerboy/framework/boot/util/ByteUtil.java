@@ -1,7 +1,7 @@
 package com.farerboy.framework.boot.util;
 
-import com.framework.boot.common.constant.Constant;
-import com.framework.boot.common.exception.BaseException;
+import com.farerboy.framework.boot.common.constant.Constant;
+import com.farerboy.framework.boot.common.exception.BaseException;
 
 import java.io.UnsupportedEncodingException;
 

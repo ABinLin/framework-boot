@@ -1,9 +1,9 @@
-package com.framework.boot.common.util;
+package com.farerboy.framework.boot.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.framework.boot.common.dto.ServerResponse;
+import com.farerboy.framework.boot.common.dto.ServerResponse;
 import java.util.List;
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package com.farerboy.framework.boot.util.encryption.exception;
 
-import com.framework.boot.common.exception.BaseException;
+import com.farerboy.framework.boot.common.exception.BaseException;
 
 /**
  * 数据加密处理异常

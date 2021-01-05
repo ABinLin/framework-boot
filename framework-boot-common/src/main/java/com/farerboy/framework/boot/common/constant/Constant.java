@@ -1,4 +1,4 @@
-package com.framework.boot.common.constant;
+package com.farerboy.framework.boot.common.constant;
 
 /**
  * 常量定义

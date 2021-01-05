@@ -7,7 +7,7 @@ import com.farerboy.framework.boot.core.helper.spring.ApplicationContextHelper;
 import com.farerboy.framework.boot.core.interceptor.InterceptorOrder;
 import com.farerboy.framework.boot.core.interceptor.LogInterceptor;
 import com.farerboy.framework.boot.core.properties.RestLogProperties;
-import com.framework.boot.common.exception.BaseException;
+import com.farerboy.framework.boot.common.exception.BaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
