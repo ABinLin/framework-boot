@@ -24,7 +24,6 @@ import java.util.List;
 /**
  * Response 对象数据返回加密处理
  * @author farerboy
- * @date 2020/12/26 5:23 下午
  */
 @RestControllerAdvice
 public class ResponseEncryptionAdvice implements ResponseBodyAdvice {

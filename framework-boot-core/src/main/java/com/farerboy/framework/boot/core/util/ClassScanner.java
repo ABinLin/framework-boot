@@ -20,10 +20,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/9/20 0020 14:20
- * @Version 1.0
+ *
+ * @author farerboy
  */
 public class ClassScanner {
     private ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
@@ -36,7 +34,6 @@ public class ClassScanner {
 
     /**
      * 添加包含的Fiter
-     * @param includeFilter
      */
     public void addIncludeFilter(TypeFilter includeFilter) {
         this.includeFilters.add(includeFilter);
@@ -44,7 +41,6 @@ public class ClassScanner {
 
     /**
      * 添加排除的Fiter
-     * @param excludeFilter
      */
     public void addExcludeFilter(TypeFilter excludeFilter) {
         this.excludeFilters.add(excludeFilter);
@@ -52,9 +48,6 @@ public class ClassScanner {
 
     /**
      * 扫描指定的包，获取包下所有的Class
-     * @param basePackage 包名
-     * @param targetTypes 需要指定的目标类型,可以是pojo,可以是注解
-     * @return Set<Class<?>>
      */
     public static Set<Class<?>> scan(String basePackage,
                                      Class<?>... targetTypes) {
@@ -71,9 +64,6 @@ public class ClassScanner {
 
     /**
      * 扫描指定的包，获取包下所有的Class
-     * @param basePackages 包名,多个
-     * @param targetTypes 需要指定的目标类型,可以是pojo,可以是注解
-     * @return Set<Class<?>>
      */
     public static Set<Class<?>> scan(String[] basePackages,
                                      Class<?>... targetTypes) {
@@ -94,8 +84,6 @@ public class ClassScanner {
 
     /**
      * 扫描指定的包，获取包下所有的Class
-     * @param basePackages 包名
-     * @return Set<Class<?>>
      */
     public Set<Class<?>> doScan(String [] basePackages) {
         Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -107,8 +95,6 @@ public class ClassScanner {
 
     /**
      * 扫描指定的包，获取包下所有的Class
-     * @param basePackage 包名
-     * @return Set<Class<?>>
      */
     public Set<Class<?>> doScan(String basePackage) {
         Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -136,9 +122,6 @@ public class ClassScanner {
 
     /**
      * 处理 excludeFilters和includeFilters
-     * @param metadataReader
-     * @return boolean
-     * @throws IOException
      */
     private boolean matches(MetadataReader metadataReader) throws IOException {
         for (TypeFilter tf : this.excludeFilters) {

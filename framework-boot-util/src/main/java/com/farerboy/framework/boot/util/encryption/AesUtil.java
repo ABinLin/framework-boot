@@ -18,7 +18,6 @@ import java.util.Arrays;
 /**
  * AES 加密工具类
  * @author farerboy
- * @date 2020/12/29 7:41 下午
  */
 public class AesUtil {
     public static final String AES = "AES";
@@ -26,9 +25,6 @@ public class AesUtil {
     /**
      * byte[] 补全 16 位
      * @author farerboy
-     * @date 2020/12/28 3:10 下午
-     * @param key
-     * @return byte[]
      */
     private static byte[] completionBytes16(String key) throws UnsupportedEncodingException {
         byte[] keyBytes = key.getBytes(Constant.CHARSET_UTF_8);

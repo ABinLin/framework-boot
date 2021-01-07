@@ -23,19 +23,13 @@ import java.io.*;
 import java.util.*;
 
 /**
- * ClassName:Xml
- * Function: XML的工具方法
- * Date:     2014-8-10 下午10:48:21
- * @author
+ * XML的工具方法
  */
 @SuppressWarnings({"rawtypes","unchecked"})
 public class XmlUtils {
 
-    /** <一句话功能简述>
-     * <功能详细描述>request转字符串
-     * @param request
-     * @return
-     * @see [类、类#方法、类#成员]
+    /**
+     * request转字符串
      */
     public static String parseRequest(HttpServletRequest request){
         String body = "";
@@ -81,8 +75,6 @@ public class XmlUtils {
     /**
      * 从request中获得参数Map，并返回可读的Map
      *
-     * @param request
-     * @return
      */
     public static SortedMap getParameterMap(HttpServletRequest request) {
         // 参数Map
@@ -116,11 +108,6 @@ public class XmlUtils {
 
     /**
      * 转XMLmap
-     * @author
-     * @param xmlBytes
-     * @param charset
-     * @return
-     * @throws Exception
      */
     public static Map<String, String> toMap(byte[] xmlBytes,String charset) throws Exception{
         SAXReader reader = new SAXReader(false);
@@ -133,9 +120,6 @@ public class XmlUtils {
 
     /**
      * 转MAP
-     * @author
-     * @param element
-     * @return
      */
     public static Map<String, String> toMap(Element element){
         Map<String, String> rest = new HashMap<String, String>();
@@ -162,10 +146,6 @@ public class XmlUtils {
 
     /**
      * XML格式字符串转换为Map
-     *
-     * @param xml XML字符串
-     * @return XML数据转换后的Map
-     * @throws Exception
      */
     public static Map<String, String> xmlToMap(String xml) {
         try {

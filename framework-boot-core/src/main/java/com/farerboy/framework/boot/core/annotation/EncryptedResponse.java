@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
  * 返回值加密
  *
  * @author farerboy
- * @date 2020/12/26 7:03 下午
  */
 
 @Target({ElementType.METHOD})

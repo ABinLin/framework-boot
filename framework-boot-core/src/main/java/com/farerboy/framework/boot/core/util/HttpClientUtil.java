@@ -12,10 +12,8 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/7/25 0025 11:37
- * @Version 1.0
+ *
+ * @author farerboy
  */
 @Component
 public class HttpClientUtil {

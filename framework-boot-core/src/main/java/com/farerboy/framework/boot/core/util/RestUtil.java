@@ -7,10 +7,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @Description Rest 接口操作工具类
- * @Author farerboy
- * @Date 2019/7/2 0002 17:44
- * @Version 1.0
+ * Rest 接口操作工具类
+ * @author farerboy
  */
 public class RestUtil {
 

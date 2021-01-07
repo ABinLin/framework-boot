@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
  * 签名忽略字段
  *
  * @author linjianbin
- * @date 2020/12/29 10:10 下午
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

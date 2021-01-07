@@ -6,7 +6,6 @@ import com.farerboy.framework.boot.common.exception.BaseException;
  * 数据加密处理异常
  *
  * @author farerboy
- * @date 2020/12/29 8:04 下午
  */
 public class EncryptionException extends BaseException {
 

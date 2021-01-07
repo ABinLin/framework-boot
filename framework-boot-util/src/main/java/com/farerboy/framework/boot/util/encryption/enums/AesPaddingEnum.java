@@ -4,14 +4,12 @@ package com.farerboy.framework.boot.util.encryption.enums;
  * AES 加密填充枚举
  *
  * @author farerboy
- * @date 2020/12/28 3:53 下午
  */
 public enum  AesPaddingEnum {
 
     /**
      * 加密填充枚举
      * @author farerboy
-     * @date 2020/12/28 3:50 下午
      */
     PKCS_5_PADDING("PKCS5Padding"),
 

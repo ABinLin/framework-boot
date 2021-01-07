@@ -10,36 +10,12 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * @author xpy
- * @desc
- * @date 2019/10/14 19:56
- */
 public class ImageUtils {
 
-    /**
-     * 功能描述: 获取网络流图片
-     * url ：图片地址
-     * folderPath ：图片保存路径
-     * @Param: [url, folderPath, fileName]
-     * @Return: java.io.File
-     * @Author: XPY
-     * @Date: 2019/10/15 13:54
-     */
     public static File getUrlImage(String url,String folderPath){
         return getUrlImage(url,folderPath,null);
     }
 
-    /**
-     * 功能描述: 获取网络流图片
-     * url ：图片地址
-     * folderPath ：图片保存路径
-     * fileName ： 图片名称为空则使用时间戳 eg：不需要传后缀名
-     * @Param: [url, folderPath, fileName]
-     * @Return: java.io.File
-     * @Author: XPY
-     * @Date: 2019/10/15 13:54
-     */
     public static File getUrlImage(String url,String folderPath,String fileName){
         try {
             String[] split = url.split("\\.");
@@ -107,18 +83,6 @@ public class ImageUtils {
         }
     }
 
-    /**
-     * @Description 按固定长宽进行缩放
-     * 图片缩放,w，h为缩放的目标宽度和高度
-     * src为源文件目录，dest为缩放后保存目录
-     * @Date 2019/11/27 0027 11:22
-     * @Author linjb
-     * @param src
-     * @param dest
-     * @param w
-     * @param h
-     * @return void
-     */
     public static void zoomImage(String src,String dest,int w,int h,boolean proportion){
         if(!validFilePathExist(src)){
             throw new RuntimeException("源文件不存在："+src);
@@ -150,15 +114,6 @@ public class ImageUtils {
         }
     }
 
-    /**
-     * @Description 图片按比率缩放
-     * @Date 2019/11/27 0027 11:34
-     * @Author linjb
-     * @param src size为文件大小
-     * @param dest
-     * @param size
-     * @return void
-     */
     public static void zoomImage(String src,String dest,int size) {
         if(!validFilePathExist(src)){
             throw new RuntimeException("源文件不存在："+src);

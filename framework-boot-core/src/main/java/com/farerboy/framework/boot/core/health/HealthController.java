@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 监控检测接口
  * @author farerboy
- * @date 2020/12/29 7:39 下午
  */
 @RestController
 public class HealthController {

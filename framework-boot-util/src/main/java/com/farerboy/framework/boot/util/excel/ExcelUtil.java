@@ -15,10 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/7/11 0011 18:41
- * @Version 1.0
+ *
+ * @author farerboy
  */
 public class ExcelUtil {
     public static final int EXPORT_07_LEAST_SIZE = 50000;
@@ -27,11 +25,6 @@ public class ExcelUtil {
 
     /**
      * 功能 :获取表单导出数据
-     * @param list       数据列表
-     * @param className  实体对象class
-     * @param exportType 模板标号
-     * @return
-     * @throws Exception
      */
     public HSSFWorkbook exportExcel(List<T> list,Class className, Integer exportType) throws Exception {
         // 获取属性
@@ -78,12 +71,6 @@ public class ExcelUtil {
     /**
      * 功能 :获取表单导出数据
      *
-     * @param list       数据列表
-     * @param title      首行标题
-     * @param className  实体对象class
-     * @param exportType 模板标号
-     * @return
-     * @throws Exception
      */
     public HSSFWorkbook exportExcel(List<T> list, String title, Class className, Integer exportType) throws Exception {
         // 获取属性
@@ -147,13 +134,7 @@ public class ExcelUtil {
 
     /**
      * 功能：組裝列明
-     *
-     * @param exportType 模板编号
-     * @param fieldList  列名
-     * @param columnsize 列数
-     * @param hSheet     sheet页
-     * @param hRow       行
-     * @param cellStyle  样式
+     * 模板编号 列名 列数 sheet页 行 样式
      */
     private void generateTitle(Integer exportType, List<Field> fieldList, int columnsize, HSSFSheet hSheet, HSSFRow hRow,
                                HSSFCellStyle cellStyle) {
@@ -177,16 +158,6 @@ public class ExcelUtil {
     /**
      * 组装excel的数据
      *
-     * @param list       具体数据
-     * @param fieldList  列名
-     * @param columnsize 列数
-     * @param rowindex   行数计数
-     * @param hSheet     sheet页
-     * @param cellStyle  样式
-     * @return
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
      */
     private int generateData(List<T> list, List<Field> fieldList, int columnsize, int rowindex, HSSFSheet hSheet,
                              HSSFCellStyle cellStyle) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
@@ -222,12 +193,6 @@ public class ExcelUtil {
     /**
      * 生成07格式的excel对象 使用流方式防止内存溢出
      *
-     * @param list
-     * @param title
-     * @param className
-     * @param exportType
-     * @return
-     * @throws Exception
      */
     public SXSSFWorkbook exportExcel07S(List<T> list, String title, Class className, Integer exportType) throws Exception {
         // 获取属性
@@ -324,12 +289,6 @@ public class ExcelUtil {
     /**
      * 生成列名
      *
-     * @param exportType 模板编号
-     * @param fieldList  列名
-     * @param columnsize 列数
-     * @param hSheet
-     * @param hRow
-     * @param cellStyle
      */
     private void createTitle07S(Integer exportType, List<Field> fieldList, int columnsize, Sheet hSheet, Row hRow,
                                 CellStyle cellStyle) {
@@ -352,10 +311,7 @@ public class ExcelUtil {
 
     /**
      * 功能 :设置excel表格默认样式
-     *
-     * @param hWorkbook  需导出Excel数据
-     * @param fontHeight 字体粗度
-     * @param boldWeight 表格线的粗度
+     * 需导出Excel数据 字体粗度 表格线的粗度
      * @return
      */
     public HSSFCellStyle getCellStyle(HSSFWorkbook hWorkbook, short fontHeight, short boldWeight) {
@@ -384,9 +340,6 @@ public class ExcelUtil {
     /**
      * 功能 :设置excel 07表格默认样式
      *
-     * @param hWorkbook  需导出Excel数据
-     * @param fontHeight 字体粗度
-     * @param boldWeight 表格线的粗度
      * @return
      */
     public CellStyle getCellStyle07S(SXSSFWorkbook hWorkbook, short fontHeight, short boldWeight) {

@@ -3,16 +3,11 @@ package com.farerboy.framework.boot.core.util;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Description: //TODO
- * @Author: linjb
- * @Date: 2019/7/2 0002 11:01
+ *
+ * @author: linjb
  */
 public class HttpUtil {
 
-	/**
-	 * @param request
-	 * @return 用户IP
-	 */
 	public static String getIPAddress(HttpServletRequest request) {
 	    String ip = null;
 

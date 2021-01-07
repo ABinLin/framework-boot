@@ -13,10 +13,7 @@ import java.util.List;
  *
  * CSV文件导出工具类
  *
- * @author qixin
- * @description TODO
- * @data 2018/7/10 19:25
- * Version 1.0
+ * @author farerboy
  */
 public class CSVUtil {
 
@@ -62,11 +59,6 @@ public class CSVUtil {
 
     /**
      * CSV文件生成方法
-     * @param head
-     * @param dataList
-     * @param outPutPath
-     * @param filename
-     * @return
      */
     public static File createCSVFile(List<Object> head, List<List<Object>> dataList,
                                      String outPutPath, String filename) {
@@ -105,9 +97,6 @@ public class CSVUtil {
 
     /**
      * 写一行数据方法
-     * @param row
-     * @param csvWriter
-     * @throws IOException
      */
     private static void writeRow(List<Object> row, BufferedWriter csvWriter) throws IOException {
         for(int i=0 ; i< row.size() ; i++){

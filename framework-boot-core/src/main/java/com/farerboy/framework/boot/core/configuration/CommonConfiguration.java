@@ -15,9 +15,7 @@ import java.util.Collections;
 
 /**
  *
- *
  * @author farerboy
- * @date 2020/12/22 11:18 上午
  */
 @Configuration
 public class CommonConfiguration {

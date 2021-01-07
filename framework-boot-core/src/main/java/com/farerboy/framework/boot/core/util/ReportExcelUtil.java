@@ -12,22 +12,13 @@ import java.net.URLEncoder;
 import java.util.List;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/7/11 0011 18:39
- * @Version 1.0
+ *
+ * @author linjb
  */
 public class ReportExcelUtil {
     /**
      * 功能: Excel导出公共方法
      * 记录条数大于50000时 导出.xlsx文件(excel07+)  小于等于50000时导出 .xls文件(excel97-03)
-     * @param list            需要导出的列表数据
-     * @param title            导出文件的标题
-     * @param className        导出对象的类名
-     * @param exportType    针对同一个pojo可能有多个不同的导出模板时,可以通过此属性来决定导出哪一套模板，默认第一套
-     * @param response         用来获取输出流
-     * @param request       针对火狐浏览器导出时文件名乱码的问题,也可以不传入此值
-     * @throws IOException
      */
     public void excelExport(List list, String title, Class className, Integer exportType, HttpServletResponse response, HttpServletRequest request) throws IOException {
         OutputStream out = response.getOutputStream();

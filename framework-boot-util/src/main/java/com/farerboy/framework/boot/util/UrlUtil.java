@@ -12,17 +12,11 @@ import java.util.*;
  * url 相关工具类
  *
  * @author farerboy
- * @date 2020/12/30 3:24 下午
  */
 public class UrlUtil {
 
     /**
      * 根据对象构造url参数拼接字符串
-     * a=1&b=2
-     * @author farerboy
-     * @date 2020/12/30 9:21 下午
-     * @param o
-     * @return String
      */
     public static String buildUrlParams(Object o,boolean sort) {
         List<String> list = new ArrayList<>();
@@ -92,9 +86,6 @@ public class UrlUtil {
     /**
      * 根据Map构造url参数拼接字符串
      * @author farerboy
-     * @date 2020/12/30 10:30 下午
-     * @param
-     * @return
      */
     public static String buildUrlParams(Map<String, String> map,boolean sort) {
         StringBuilder sb = new StringBuilder();

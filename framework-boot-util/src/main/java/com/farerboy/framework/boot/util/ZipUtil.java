@@ -21,9 +21,6 @@ import java.util.zip.ZipInputStream;
 public class ZipUtil {
     /**
      * zip解压
-     * @param srcFile        zip源文件
-     * @param destDirPath     解压后的目标文件夹
-     * @throws RuntimeException 解压失败会抛出运行时异常
      */
     public static void unZip(File srcFile, String destDirPath) {
         try {
@@ -36,11 +33,6 @@ public class ZipUtil {
     }
     /**
      * 功能描述:压缩文件 sourcePath 要打包的文件夹 targetPath压缩到哪个文件
-     * isDeleteSourcePath 是否删除文件夹
-     * @Param: [sourcePath, targetPath]
-     * @Return: void
-     * @Author: XPY
-     * @Date: 2019/10/14 20:49
      */
     public static void zipFile(String sourcePath,String targetPath,boolean isDeleteSourcePath) throws Exception {
         // 生成的压缩文件
@@ -67,11 +59,7 @@ public class ZipUtil {
     }
 
     /**
-     * @Description 验证ZIP文件中是否都是某种文件
-     * @Date 2019/10/17 0017 16:30
-     * @Author linjb
-     * @param
-     * @return boolean
+     * 验证ZIP文件中是否都是某种文件
      */
     public static boolean validZipFile(String sourcePath, List<String> suffixList){
         boolean result =false;

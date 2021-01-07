@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * rest api 相关配置
  *
  * @author linjianbin
- * @date 2021/1/5 7:50 下午
  */
 @ConfigurationProperties(prefix="farerboy.rest.api")
 public class RestApiProperties {
@@ -14,21 +13,18 @@ public class RestApiProperties {
     /**
      * 是否开启接口签名
      * @author farerboy
-     * @date 2021/1/5 7:52 下午
      */
     private Boolean signEnable;
 
     /**
      * 接口签名秘钥
      * @author farerboy
-     * @date 2021/1/5 7:52 下午
      */
     private String signKey;
 
     /**
      * 接口是否跨域
      * @author farerboy
-     * @date 2021/1/5 7:52 下午
      */
     private Boolean crossEnable;
 

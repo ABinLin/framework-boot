@@ -22,7 +22,6 @@ import java.util.List;
 /**
  * 全局异常处理器
  * @author farerboy
- * @date 2020/12/26 5:23 下午
  */
 @RestControllerAdvice
 public class ExceptionAdvice {

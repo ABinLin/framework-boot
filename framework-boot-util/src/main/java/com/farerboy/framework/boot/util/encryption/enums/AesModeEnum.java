@@ -4,14 +4,12 @@ package com.farerboy.framework.boot.util.encryption.enums;
  * AES 加密模式枚举
  *
  * @author farerboy
- * @date 2020/12/28 3:48 下午
  */
 public enum AesModeEnum {
 
     /**
      * ECB模式
      * @author farerboy
-     * @date 2020/12/28 3:50 下午
      */
     ECB("ECB"),
     CBC("CBC"),

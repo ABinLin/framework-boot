@@ -8,10 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Description 通用的数据响应对象
- * @Author farerboy
- * @Date 2019/7/2 0002 15:01
- * @Version 1.0
+ * 通用的数据响应对象
+ * @author farerboy
  */
 public class ServerResponse<T> implements Transformation {
 

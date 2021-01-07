@@ -28,7 +28,6 @@ import java.util.*;
  * web mvc 配置
  *
  * @author farerboy
- * @date 2020/12/22 11:26 上午
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -101,7 +100,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     /**
      * 序列化
      * @author farerboy
-     * @date 2021/1/5 8:39 下午
      */
     @Bean
     public HttpMessageConverters useConverters() {

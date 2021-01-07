@@ -1,16 +1,13 @@
 package com.farerboy.framework.boot.common.enums;
 
 /**
- *@Description 请求放回编码
- *@Author farerboy
- *@Date 2019/7/2 0002 14:01
- *@Version 1.0
+ * 请求放回编码
+ *@author farerboy
  */
 public enum ResponseCode {
     /**
      * 请求返回编码
      * @author farerboy
-     * @date 2020/12/26 1:53 下午
      */
     SUCCESS("success","操作成功"),
 

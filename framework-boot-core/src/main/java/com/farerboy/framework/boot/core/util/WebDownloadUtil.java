@@ -9,10 +9,8 @@ import java.io.*;
 import java.net.URLEncoder;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/7/12 0012 10:33
- * @Version 1.0
+ *
+ * @author farerboy
  */
 public class WebDownloadUtil {
 
@@ -45,9 +43,7 @@ public class WebDownloadUtil {
     }
 
     /**
-     * @author xpy
-     * @desc http响应文件工具类
-     * @date 2019/10/15 14:06
+     * http响应文件工具类
      */
     public static void writeZip(File file,HttpServletRequest request, HttpServletResponse response) throws IOException {
         OutputStream toClient = null;

@@ -13,9 +13,6 @@ import java.io.IOException;
 /**
  * 给RestTemplate请求加上请求头sign
  * @author farerboy
- * @date 2021/1/5 9:05 下午
- * @param
- * @return
  */
 public class SignInterceptor implements ClientHttpRequestInterceptor {
 
@@ -31,7 +28,6 @@ public class SignInterceptor implements ClientHttpRequestInterceptor {
     /**
      * 暂时只是时间戳签名
      * @author farerboy
-     * @date 2021/1/5 7:59 下午
      */
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {

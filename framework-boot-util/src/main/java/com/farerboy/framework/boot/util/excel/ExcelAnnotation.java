@@ -3,10 +3,8 @@ package com.farerboy.framework.boot.util.excel;
 import java.lang.annotation.*;
 
 /**
- * @Description TODO
- * @Author linjb
- * @Date 2019/7/11 0011 18:43
- * @Version 1.0
+ *
+ * @author farerboy
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

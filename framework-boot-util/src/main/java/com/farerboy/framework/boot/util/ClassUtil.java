@@ -16,9 +16,6 @@ public class ClassUtil {
 
     /**
      * 通过包名获取包内所有类
-     *
-     * @param pkg
-     * @return
      */
     public static List<Class<?>> getAllClassByPackageName(Package pkg) {
         String packageName = pkg.getName();
@@ -76,9 +73,6 @@ public class ClassUtil {
 
     /**
      * 从包package中获取所有的Class
-     *
-     * @param packageName
-     * @return
      */
     private static List<Class<?>> getClasses(String packageName) {
 
@@ -162,10 +156,6 @@ public class ClassUtil {
     /**
      * 以文件的形式来获取包下的所有Class
      *
-     * @param packageName
-     * @param packagePath
-     * @param recursive
-     * @param classes
      */
     private static void findAndAddClassesInPackageByFile(String packageName, String packagePath, final boolean recursive, List<Class<?>> classes) {
         // 获取此包的目录 建立一个File

@@ -20,7 +20,6 @@ import java.util.UUID;
 /**
  * 日志拦截器
  * @author farerboy
- * @date 2020/12/29 7:41 下午
  */
 public class LogInterceptor implements HandlerInterceptor {
 

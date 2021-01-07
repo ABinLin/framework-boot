@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * token 权限抽象拦截器
  * @author farerboy
- * @date 2020/12/29 7:40 下午
  */
 public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
 
@@ -33,11 +32,6 @@ public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
     /**
      * 执行token拦截器具体业务
      * @author farerboy
-     * @date 2021/1/5 8:49 下午
-     * @param request
-     * @param response
-     * @param handler
-     * @return boolean
      */
     public abstract boolean doHandle(HttpServletRequest request, HttpServletResponse response, Object handler);
 

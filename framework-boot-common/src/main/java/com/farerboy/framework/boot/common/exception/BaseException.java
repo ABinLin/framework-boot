@@ -4,7 +4,6 @@ package com.farerboy.framework.boot.common.exception;
  * 自定义基础异常
  *
  * @author farerboy
- * @date 2020/12/21 10:06 下午
  */
 public class BaseException extends RuntimeException{
 

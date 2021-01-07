@@ -7,7 +7,6 @@ import java.util.Map;
  * 断言机制
  *
  * @author linjianbin
- * @date 2020/12/21 10:21 下午
  */
 public class AssertUtil {
 

@@ -8,8 +8,7 @@ import java.util.Base64;
 
 /**
  * Base64加解密算法
- * @Author: farerboy
- * @Date: 2019/6/2 0002 16:41
+ * @author: farerboy
  */
 public class Base64Util {
 

@@ -66,7 +66,6 @@ public class ControllerAopLog {
 	
 	/**
 	 * obj 执行切点方法的返回值
-	 * @param obj
 	 */
 	@AfterReturning(value = "executeService()" , returning="obj")
 	public void afterAdviceReturn(Object obj){

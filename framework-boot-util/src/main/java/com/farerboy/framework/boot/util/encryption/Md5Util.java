@@ -15,7 +15,6 @@ import java.util.*;
 /**
  * MD5 加密
  * @author farerboy
- * @date 2020/12/29 7:46 下午
  */
 public class Md5Util {
     public static final String MD5 = "MD5";

@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
  * 字节工具类
  *
  * @author farerboy
- * @date 2020/12/29 8:44 下午
  */
 public class ByteUtil {
 
