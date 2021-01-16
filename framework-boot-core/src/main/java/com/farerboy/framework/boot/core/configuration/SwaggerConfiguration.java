@@ -1,15 +1,20 @@
 package com.farerboy.framework.boot.core.configuration;
 
+import com.farerboy.framework.boot.common.exception.BaseException;
 import com.farerboy.framework.boot.core.properties.ProjectProperties;
 import com.farerboy.framework.boot.core.properties.SwaggerProperties;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -19,8 +24,11 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.lang.annotation.Annotation;
 import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -36,6 +44,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @ConditionalOnProperty(value = {"farerboy.swagger.enable"}, matchIfMissing = true)
 public class SwaggerConfiguration {
 
+    private Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     private SwaggerProperties swaggerProperties;
 
@@ -46,17 +55,26 @@ public class SwaggerConfiguration {
     private ProjectProperties projectProperties;
 
     @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+    public Docket restApi(){
+        ApiSelectorBuilder apiSelectorBuilder =new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .select()
-                // 加了ApiOperation注解的类，才生成接口文档
-                .apis(RequestHandlerSelectors.withMethodAnnotation(RestController.class))
-                // 包下的类，才生成接口文档
-                // .apis(RequestHandlerSelectors.basePackage("demo.yiyu.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(security());
+                .select();
+        if(StringUtils.isNotBlank(swaggerProperties.getScanAnnotation())){
+            Class<? extends Annotation> annotation = null;
+            Class clazz = null;
+            try {
+                clazz = Class.forName(swaggerProperties.getScanAnnotation());
+            }catch (ClassNotFoundException e){
+                throw new BaseException("ClassNotFoundException",e.getMessage(),e);
+            }
+            annotation = clazz;
+            apiSelectorBuilder.apis(RequestHandlerSelectors.withMethodAnnotation(annotation));
+        } else if(StringUtils.isNotBlank(swaggerProperties.getScanBasePackage())){
+            apiSelectorBuilder.apis(RequestHandlerSelectors.basePackage(swaggerProperties.getScanBasePackage()));
+        } else {
+            apiSelectorBuilder.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class));
+        }
+        return apiSelectorBuilder.paths(PathSelectors.any()).build().securitySchemes(security());
     }
 
     private ApiInfo apiInfo() {

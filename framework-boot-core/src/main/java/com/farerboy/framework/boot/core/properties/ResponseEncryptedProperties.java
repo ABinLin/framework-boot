@@ -1,12 +1,14 @@
 package com.farerboy.framework.boot.core.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 返回值加密 属性配置项
  *
  * @author linjianbin
  */
+@Configuration
 @ConfigurationProperties(prefix="farerboy.response.encrypted")
 public class ResponseEncryptedProperties {
 

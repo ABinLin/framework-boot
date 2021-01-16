@@ -1,12 +1,14 @@
 package com.farerboy.framework.boot.core.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * swagger 相关配置
  *
  * @author linjianbin
  */
+@Configuration
 @ConfigurationProperties(prefix="farerboy.swagger")
 public class SwaggerProperties {
 
@@ -63,6 +65,16 @@ public class SwaggerProperties {
      * @author farerboy
      */
     private Boolean enable;
+
+    /**
+     * 扫描的注解-高优先级
+     */
+    private String scanAnnotation;
+
+    /**
+     * 扫描的基础包-低优先级
+     */
+    private String scanBasePackage;
 
     public String getTitle() {
         return title;
@@ -134,5 +146,21 @@ public class SwaggerProperties {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getScanAnnotation() {
+        return scanAnnotation;
+    }
+
+    public void setScanAnnotation(String scanAnnotation) {
+        this.scanAnnotation = scanAnnotation;
+    }
+
+    public String getScanBasePackage() {
+        return scanBasePackage;
+    }
+
+    public void setScanBasePackage(String scanBasePackage) {
+        this.scanBasePackage = scanBasePackage;
     }
 }
