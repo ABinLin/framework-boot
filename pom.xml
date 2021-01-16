@@ -14,7 +14,7 @@
     <groupId>com.farerboy</groupId>
     <artifactId>framework-boot</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>framework-boot</name>
     <url>https://github.com/ABinLin/framework-boot</url>
     <description>Development of scaffold based on springboot</description>
