@@ -26,7 +26,7 @@ public class PageHelper {
         // 排序字段
         // 防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
         if(StringUtils.isNotBlank(sort)){
-            String orderField = SqlHelper.sqlInject(order);
+            String orderField = SqlHelper.sqlInject(sort);
             // 前端字段排序
             if (StringUtils.isNotBlank(orderField)) {
                 if (ASC.equalsIgnoreCase(order)) {
