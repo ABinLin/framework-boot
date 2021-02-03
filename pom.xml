@@ -34,6 +34,7 @@
         <module>framework-boot-util</module>
         <module>framework-boot-common</module>
         <module>framework-boot-orm</module>
+        <module>framework-boot-test</module>
     </modules>
 
     <properties>
