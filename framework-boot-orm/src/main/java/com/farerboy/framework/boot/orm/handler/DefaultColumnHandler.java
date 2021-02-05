@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.orm.helper;
+package com.farerboy.framework.boot.orm.handler;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,7 +15,7 @@ import java.util.Set;
  *
  * @author linjianbin
  */
-public class DefaultColumnHelper {
+public class DefaultColumnHandler {
 
     private static Map<String,Object> defaultColumn = null;
 

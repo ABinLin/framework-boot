@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.orm.handler;
+package com.farerboy.framework.boot.orm.context;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author linjianbin
  */
-public interface DefaultColumnInitHandler {
+public interface DefaultColumnContext {
 
     void setDefaultColumn(Map<String,Object> defaultColumn);
 

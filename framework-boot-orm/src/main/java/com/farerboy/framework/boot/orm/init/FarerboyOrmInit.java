@@ -2,8 +2,8 @@ package com.farerboy.framework.boot.orm.init;
 
 import com.farerboy.framework.boot.core.helper.spring.ApplicationContextHelper;
 import com.farerboy.framework.boot.core.properties.ProjectProperties;
-import com.farerboy.framework.boot.orm.handler.DefaultColumnInitHandler;
-import com.farerboy.framework.boot.orm.helper.DefaultColumnHelper;
+import com.farerboy.framework.boot.orm.context.DefaultColumnContext;
+import com.farerboy.framework.boot.orm.handler.DefaultColumnHandler;
 import com.farerboy.framework.boot.orm.helper.EnvHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -47,10 +47,11 @@ public class FarerboyOrmInit implements ApplicationRunner {
         }
         EnvHelper.setEnv(e);
         log.info("Init project env = {}",EnvHelper.getEnv());
-        DefaultColumnInitHandler defaultColumnInitHandler = applicationContextHelper.getBean(DefaultColumnInitHandler.class);
-        if(defaultColumnInitHandler != null){
+        DefaultColumnContext defaultColumnContext = applicationContextHelper.getBean(DefaultColumnContext.class);
+        if(defaultColumnContext != null){
             Map<String,Object> map = new HashMap<>(4);
-            defaultColumnInitHandler.setDefaultColumn(map);
+            defaultColumnContext.setDefaultColumn(map);
+            DefaultColumnHandler.setDefaultColumn(map);
         }
     }
 }
