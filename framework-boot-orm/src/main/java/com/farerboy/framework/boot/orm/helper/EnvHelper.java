@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.core.helper.env;
+package com.farerboy.framework.boot.orm.helper;
 
 import com.farerboy.framework.boot.util.AssertUtil;
 

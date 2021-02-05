@@ -80,6 +80,10 @@
             <groupId>com.farerboy</groupId>
             <artifactId>framework-boot-util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.farerboy</groupId>
+            <artifactId>framework-boot-core</artifactId>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
