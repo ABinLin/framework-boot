@@ -1,6 +1,5 @@
 package com.farerboy.framework.boot.core.helper.env;
 
-import com.farerboy.framework.boot.common.enums.EnvEnum;
 import com.farerboy.framework.boot.util.AssertUtil;
 
 /**
@@ -8,20 +7,15 @@ import com.farerboy.framework.boot.util.AssertUtil;
  */
 public class EnvHelper {
 
-    private static EnvEnum envEnum;
+    private static String env;
 
     public static void setEnv(String e) {
-        AssertUtil.notBlank(e, "env is required.");
-        EnvEnum envEnum = EnvEnum.getEnv(e);
-        AssertUtil.notNull(envEnum, "envEnum is required.");
-        EnvHelper.envEnum = envEnum;
+        AssertUtil.notBlank(e, "Env is required.");
+        EnvHelper.env = e;
     }
 
-    public static EnvEnum getEnv() {
-        return envEnum;
+    public static String getEnv() {
+        return env;
     }
 
-    public static String getEnvCode() {
-        return envEnum.name();
-    }
 }
