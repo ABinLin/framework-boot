@@ -25,7 +25,7 @@ public abstract class AbstractDefaultColumnContext {
         setDefaultColumn(defaultColumn);
     }
 
-    abstract void setDefaultColumn(Map<String, Object> defaultColumn);
+    public abstract void setDefaultColumn(Map<String, Object> defaultColumn);
 
     public static boolean contains(String column){
         if(MapUtils.isEmpty(defaultColumn)){
