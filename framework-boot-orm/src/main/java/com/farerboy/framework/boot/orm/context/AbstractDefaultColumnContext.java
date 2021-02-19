@@ -1,4 +1,4 @@
-package com.farerboy.framework.boot.orm.helper;
+package com.farerboy.framework.boot.orm.context;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -8,16 +8,24 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
  *
+ *
  * @author linjianbin
  */
-public class DefaultColumnHelper {
+public abstract class AbstractDefaultColumnContext {
 
-    private static Map<String,Object> defaultColumn = null;
+    private static Map<String,Object> defaultColumn = new HashMap<>();
+
+    public void initDefaultColumn(){
+        setDefaultColumn(defaultColumn);
+    }
+
+    abstract void setDefaultColumn(Map<String, Object> defaultColumn);
 
     public static boolean contains(String column){
         if(MapUtils.isEmpty(defaultColumn)){
@@ -31,10 +39,6 @@ public class DefaultColumnHelper {
             return null;
         }
         return defaultColumn.get(column);
-    }
-
-    public static void setDefaultColumn(Map<String,Object> map){
-        defaultColumn = map;
     }
 
     public static Map<String, Object> getBaseColumn(Class<?> cls) {
@@ -109,4 +113,5 @@ public class DefaultColumnHelper {
         }
         return wrapper;
     }
+
 }

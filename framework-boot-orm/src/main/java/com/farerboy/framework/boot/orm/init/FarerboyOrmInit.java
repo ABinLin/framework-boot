@@ -2,8 +2,7 @@ package com.farerboy.framework.boot.orm.init;
 
 import com.farerboy.framework.boot.core.helper.spring.ApplicationContextHelper;
 import com.farerboy.framework.boot.core.properties.ProjectProperties;
-import com.farerboy.framework.boot.orm.context.DefaultColumnContext;
-import com.farerboy.framework.boot.orm.helper.DefaultColumnHelper;
+import com.farerboy.framework.boot.orm.context.AbstractDefaultColumnContext;
 import com.farerboy.framework.boot.orm.helper.EnvHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,9 +14,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -47,11 +43,9 @@ public class FarerboyOrmInit implements ApplicationRunner {
         }
         EnvHelper.setEnv(e);
         log.info("Init project env = {}",EnvHelper.getEnv());
-        DefaultColumnContext defaultColumnContext = applicationContextHelper.getBean(DefaultColumnContext.class);
-        if(defaultColumnContext != null){
-            Map<String,Object> map = new HashMap<>(4);
-            defaultColumnContext.setDefaultColumn(map);
-            DefaultColumnHelper.setDefaultColumn(map);
+        AbstractDefaultColumnContext abstractDefaultColumnContext = applicationContextHelper.getBean(AbstractDefaultColumnContext.class);
+        if(abstractDefaultColumnContext != null){
+            abstractDefaultColumnContext.initDefaultColumn();
         }
     }
 }
