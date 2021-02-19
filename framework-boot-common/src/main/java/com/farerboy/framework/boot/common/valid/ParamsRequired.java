@@ -4,9 +4,7 @@ import com.farerboy.framework.boot.common.annotaion.NotNull;
 import com.farerboy.framework.boot.common.exception.BaseException;
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 参数验证
@@ -32,21 +30,21 @@ public interface ParamsRequired {
                     message = field.getName()+" can not be null !";
                 }
                 if (fieldObject == null) {
-                    throw new BaseException(message);
+                    throw new IllegalArgumentException(message);
                 }
                 if(fieldObject instanceof String && "".equals(fieldObject.toString().trim())){
-                    throw new BaseException(message);
+                    throw new IllegalArgumentException(message);
                 }
                 if(fieldObject instanceof Collection){
                     Collection collection = (Collection) fieldObject;
                     if(collection.isEmpty()){
-                        throw new BaseException(message);
+                        throw new IllegalArgumentException(message);
                     }
                 }
                 if(fieldObject instanceof Map){
                     Map map = (Map) fieldObject;
                     if(map.isEmpty()){
-                        throw new BaseException(message);
+                        throw new IllegalArgumentException(message);
                     }
                 }
             }
