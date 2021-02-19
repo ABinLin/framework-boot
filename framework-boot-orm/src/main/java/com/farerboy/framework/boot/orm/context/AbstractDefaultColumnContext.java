@@ -114,4 +114,32 @@ public abstract class AbstractDefaultColumnContext {
         return wrapper;
     }
 
+    public static  <T> T newInstance(Class<T> cls) {
+        T t = null;
+        try {
+            t = cls.newInstance();
+        }catch (Exception e){
+            throw new BaseException("ClassNotFound",e.getMessage(),e);
+        }
+        Field[] fields = cls.getDeclaredFields();
+        for (Field f : fields) {
+            f.setAccessible(true);
+            String columnStr = null;
+            TableField tableField = f.getAnnotation(TableField.class);
+            if(tableField != null && StringUtils.isNotBlank(tableField.value())){
+                columnStr = tableField.value();
+            }
+            if(columnStr == null){
+                columnStr = f.getName();
+            }
+            if(contains(columnStr)){
+                try {
+                    f.set(t,getDefaultColumn(columnStr));
+                }catch (Exception e){
+                    throw new BaseException("SET_DEFAULT_COLUMN_ERROR",e.getMessage(),e);
+                }
+            }
+        }
+        return t;
+    }
 }
