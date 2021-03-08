@@ -1,18 +1,129 @@
 package com.farerboy.framework.boot.util;
 
+import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class ClassUtil {
+
+    private static final Map<String, Class<?>> primitiveClassMap;
+
+    static {
+        primitiveClassMap = new HashMap<>();
+        primitiveClassMap.put("byte", int.class);
+        primitiveClassMap.put("short", short.class);
+        primitiveClassMap.put("int", int.class);
+        primitiveClassMap.put("long", long.class);
+        primitiveClassMap.put("char", char.class);
+        primitiveClassMap.put("float", float.class);
+        primitiveClassMap.put("double", double.class);
+        primitiveClassMap.put("boolean", boolean.class);
+        primitiveClassMap.put("void", void.class);
+    }
+
+    public static Class<?> forName(String className) {
+        Class<?> clazz = primitiveClassMap.get(className);
+        if (clazz != null) {
+            return clazz;
+        }
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Class.forName(className) exception. className=" + className, e);
+        }
+    }
+
+    public static <T> T newInstance(String className) {
+        Class<?> clazz;
+        try {
+            clazz = Class.forName(className);
+        } catch (Throwable e) {
+            throw new RuntimeException("Class.forName(className) exception. className=" + className, e);
+        }
+        return (T)newInstance(clazz);
+    }
+
+    public static <T> T newInstance(Class<T> clazz) {
+        T instance;
+        try {
+            instance = clazz.newInstance();
+        } catch (Throwable e) {
+            throw new RuntimeException("clazz.newInstance() exception. clazz=" + clazz.getName(), e);
+        }
+
+        return instance;
+    }
+
+    public static Method getMethod(String destClass, String methodName, String[] argClassNames) {
+        Class<?> clazz = ClassUtil.forName(destClass);
+
+        Class<?>[] argClasses;
+        if (argClassNames == null) {
+            argClasses = null;
+        } else if (argClassNames.length == 0) {
+            argClasses = new Class<?>[] {};
+        } else {
+            argClasses = Arrays.stream(argClassNames).map(ClassUtil::forName).toArray(Class<?>[]::new);
+        }
+
+        Method method;
+        try {
+            method = clazz.getMethod(methodName, argClasses);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("clazz.getMethod(methodName, argClasses) exception. clazz=" + destClass + ",methodName=" + methodName + ",argClasses=" + JSON.toJSONString(argClasses), e);
+        }
+        return method;
+    }
+
+//    public static String[] getArgNames(Method method) {
+//        return getArgNames(method, false);
+//    }
+//
+//    public static String[] getBeautifulArgNames(Method method) {
+//        return getArgNames(method, true);
+//    }
+
+//    private static DefaultParameterNameDiscoverer defaultParameterNameDiscoverer;
+
+    /**
+     * @param defaultClassName 如果为true，当获取不到真实参数名时返回类型名（首字母小写），返回如：[ "arg0","arg1"]
+     */
+//    private static String[] getArgNames(Method method, boolean defaultClassName) {
+//        if (defaultParameterNameDiscoverer == null) {
+//            synchronized (ClassUtils.class) {
+//                if (defaultParameterNameDiscoverer == null) {
+//                    defaultParameterNameDiscoverer = new DefaultParameterNameDiscoverer();
+//                }
+//            }
+//        }
+//
+//        String[] argNames = defaultParameterNameDiscoverer.getParameterNames(method);
+//        if (argNames == null) {
+//            if (defaultClassName) {
+//                argNames = Arrays.stream(method.getParameterTypes())
+//                        .map(Class::getSimpleName)
+//                        .map(StringUtils::uncapitalize)
+//                        .toArray(String[]::new);
+//            } else {
+//                argNames = Arrays.stream(method.getParameters())
+//                        .map(Parameter::getName)
+//                        .toArray(String[]::new);
+//            }
+//        }
+//        return argNames;
+//    }
 
     /**
      * 通过包名获取包内所有类
@@ -167,6 +278,7 @@ public class ClassUtil {
         // 如果存在 就获取包下的所有文件 包括目录
         File[] dirfiles = dir.listFiles(new FileFilter() {
             // 自定义过滤规则 如果可以循环(包含子目录) 或则是以.class结尾的文件(编译好的java类文件)
+            @Override
             public boolean accept(File file) {
                 return (recursive && file.isDirectory()) || (file.getName().endsWith(".class"));
             }

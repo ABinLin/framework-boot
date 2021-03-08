@@ -25,7 +25,7 @@ public class ControllerAopLog {
     private ReqLog reqLog;
 
 //    @Pointcut("execution(* com.yiyu..*Controller.*(..))") // 包
-    @Around("@within(org.springframework.web.bind.annotation.RestController)")
+    @Pointcut("@within(org.springframework.web.bind.annotation.RestController)")
 	public void executeService(){}
 	
 	@Before(value = "executeService()")

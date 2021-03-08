@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.github.pagehelper.PageHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import java.util.Properties;
 
@@ -14,7 +17,9 @@ import java.util.Properties;
  *
  * @author farerboy
  */
+@Configuration
 public class MybatisPlusConfiguration {
+    private Logger log = LoggerFactory.getLogger(getClass());
     /**
      * 分页插件
      */
@@ -40,7 +45,7 @@ public class MybatisPlusConfiguration {
     //配置mybatis的分页插件pageHelper
     @Bean
     public PageHelper pageHelper(){
-        System.out.println("开始配置数据分页插件");
+        log.info("开始配置数据分页插件");
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
         properties.setProperty("offsetAsPageNum","true");

@@ -1,12 +1,14 @@
 package com.farerboy.framework.boot.core.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * rest api 相关配置
  *
  * @author linjianbin
  */
+@Configuration
 @ConfigurationProperties(prefix="farerboy.rest.api")
 public class RestApiProperties {
 

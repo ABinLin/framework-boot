@@ -58,7 +58,7 @@ public class ServerResponse<T> implements Transformation {
     private ServerResponse(boolean success, ResponseCode responseCode){
         this.success = success;
         this.code = responseCode.getCode();
-        this.msg = responseCode.getCode();
+        this.msg = responseCode.getMsg();
     }
     public String getCode() {
         return code;

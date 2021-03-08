@@ -83,12 +83,12 @@ public class DateUtil {
 	 * 根据指定格式把字符串转换成 Date 类型数据
 	 */
 	public static Date parseDate(String strFormat, String dateValue) throws ParseException {
-		if (dateValue == null)
+		if (dateValue == null){
 			return null;
-
-		if (strFormat == null)
+		}
+		if (strFormat == null){
 			strFormat = yyyy_MM_dd_HH_mm_ss;
-
+		}
 		SimpleDateFormat dateFormat = new SimpleDateFormat(strFormat);
 		Date newDate = null;
 		newDate = dateFormat.parse(dateValue);
@@ -113,8 +113,9 @@ public class DateUtil {
 	 * 将 Date 类型的日期转换为指定格式的字符串
 	 */
 	public static String format(Date aTs_Datetime, String as_Pattern) {
-		if (aTs_Datetime == null || as_Pattern == null)
+		if (aTs_Datetime == null || as_Pattern == null) {
 			return null;
+		}
 		SimpleDateFormat dateFromat = new SimpleDateFormat();
 		dateFromat.applyPattern(as_Pattern);
 		return dateFromat.format(aTs_Datetime);
@@ -131,8 +132,9 @@ public class DateUtil {
 	 * 将 Timestamp 类型的日期转换为指定格式的字符串
 	 */
 	public static String format(Timestamp aTs_Datetime, String as_Pattern) {
-		if (aTs_Datetime == null || as_Pattern == null)
+		if (aTs_Datetime == null || as_Pattern == null) {
 			return null;
+		}
 
 		SimpleDateFormat dateFromat = new SimpleDateFormat();
 		dateFromat.applyPattern(as_Pattern);
@@ -281,8 +283,9 @@ public class DateUtil {
 	 */
 	public static int[] getMonthDayByYear(int year) {
 		int[] monthDay = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
 			monthDay[1] += 1;
+		}
 		return monthDay;
 	}
 	
@@ -420,8 +423,9 @@ public class DateUtil {
 	 * 返回当天零点的时间
 	 */
 	public static Date thatDay(Date date) {
-		if (date == null)
+		if (date == null) {
 			return null;
+		}
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
