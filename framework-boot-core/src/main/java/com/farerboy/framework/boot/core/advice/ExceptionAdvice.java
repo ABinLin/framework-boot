@@ -3,6 +3,7 @@ package com.farerboy.framework.boot.core.advice;
 import com.farerboy.framework.boot.common.dto.ServerResponse;
 import com.farerboy.framework.boot.common.enums.ResponseCode;
 import com.farerboy.framework.boot.common.exception.BaseException;
+import com.farerboy.framework.boot.common.exception.ValidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -34,6 +35,12 @@ public class ExceptionAdvice {
     public <T> ServerResponse<T> handleBaseException(BaseException e){
         logger.error("Base exception: "+e.getMessage(),e);
         return buildResponse(e.getCode(),e.getMsg(),e);
+    }
+
+    @ExceptionHandler(ValidException.class)
+    public <T> ServerResponse<T> handleValidException(ValidException e){
+        logger.error("Valid exception: "+e.getMessage(),e);
+        return buildResponse(e.getCode(),e.getMsg());
     }
 
     @ExceptionHandler(RuntimeException.class)
@@ -108,6 +115,11 @@ public class ExceptionAdvice {
     private <T> ServerResponse<T> buildResponse(String code, String msg,Throwable e){
         ServerResponse response = ServerResponse.createByErrorCodeMessage(code,msg);
         response.setErrorHeader(e);
+        return response;
+    }
+
+    private <T> ServerResponse<T> buildResponse(String code, String msg){
+        ServerResponse response = ServerResponse.createByErrorCodeMessage(code,msg);
         return response;
     }
 
