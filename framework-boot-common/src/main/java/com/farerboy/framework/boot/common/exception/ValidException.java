@@ -8,8 +8,13 @@ public class ValidException extends RuntimeException{
 
     private String code;
 
-    public ValidException(String msg) {
+    public ValidException() {
+        super(ResponseCode.DATA_VALIDATE_ERROR.getMsg());
+        this.msg = ResponseCode.DATA_VALIDATE_ERROR.getMsg();
+        this.code = ResponseCode.DATA_VALIDATE_ERROR.getCode();
+    }
 
+    public ValidException(String msg) {
         super(msg);
         this.msg = msg;
         this.code = ResponseCode.DATA_VALIDATE_ERROR.getCode();

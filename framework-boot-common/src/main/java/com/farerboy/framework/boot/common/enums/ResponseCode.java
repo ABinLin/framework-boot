@@ -9,11 +9,15 @@ public enum ResponseCode {
      * 请求返回编码
      * @author farerboy
      */
-    SUCCESS("success","操作成功"),
+    SUCCESS("200","操作成功"),
+
+    UNAUTHORIZED("401","UNAUTHORIZED"),
+
+    FORBIDDEN("403","FORBIDDEN"),
+
+    SYSTEM_ERROR("500","系统异常"),
 
     NO_DATA("NO_DATA","无数据"),
-
-    SYSTEM_ERROR("SYSTEM_ERROR","系统异常"),
 
     HTTP_METHOD_NOT_SUPPORTED("HTTP_METHOD_NOT_SUPPORTED","HTTP方法类型错误"),
 

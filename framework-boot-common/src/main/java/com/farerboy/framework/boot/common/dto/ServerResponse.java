@@ -81,11 +81,11 @@ public class ServerResponse<T> implements Transformation {
     }
 
     public static <T> ServerResponse<T> createBySuccess(T data) {
-        return new ServerResponse<T>(true, data);
+        return new ServerResponse<T>(true, ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMsg(), data);
     }
 
     public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
-        return new ServerResponse<T>(true,msg,data);
+        return new ServerResponse<T>(true,ResponseCode.SUCCESS.getCode(),msg,data);
     }
 
     public static <T> ServerResponse<T> createByError() {
