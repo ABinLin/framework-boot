@@ -1,12 +1,15 @@
 package com.farerboy.framework.boot.orm.context;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.farerboy.framework.boot.common.exception.BaseException;
 import com.google.common.collect.Maps;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,6 +62,41 @@ public abstract class AbstractDefaultColumnContext {
             }
         }
         return column;
+    }
+
+    public static QueryWrapper getIdQueryWrapper(Class<?> cls, Serializable id){
+        QueryWrapper wrapper = new QueryWrapper();
+        Field[] fields = cls.getDeclaredFields();
+        for (Field f : fields) {
+            f.setAccessible(true);
+            String columnStr = null;
+            // 先判断是否是主键
+            if("id".equals(f.getName())){
+                columnStr = "id";
+            }
+            if(columnStr == null){
+                TableId tableId = f.getAnnotation(TableId.class);
+                if(tableId != null && StringUtils.isNotBlank(tableId.value())){
+                    columnStr = tableId.value();
+                }
+            }
+            // 是主键
+            if(StringUtils.isNotBlank(columnStr)){
+                wrapper.eq(columnStr,id);
+                continue;
+            }
+            TableField tableField = f.getAnnotation(TableField.class);
+            if(tableField != null && StringUtils.isNotBlank(tableField.value())){
+                columnStr = tableField.value();
+            }
+            if(columnStr == null){
+                columnStr = f.getName();
+            }
+            if(contains(columnStr)){
+                wrapper.eq(columnStr,getDefaultColumn(columnStr));
+            }
+        }
+        return wrapper;
     }
 
     public static QueryWrapper getBaseQueryWrapper(Class<?> cls) {
