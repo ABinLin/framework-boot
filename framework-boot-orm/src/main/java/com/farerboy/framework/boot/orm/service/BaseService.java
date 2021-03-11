@@ -10,7 +10,6 @@ import java.util.Map;
  * TODO description
  *
  * @author linjianbin
- * @date 2021/1/16 5:33 下午
  */
 public interface BaseService<T> extends IService<T> {
 

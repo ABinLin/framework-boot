@@ -12,7 +12,6 @@ import java.util.Map;
  * TODO description
  *
  * @author linjianbin
- * @date 2021/1/16 5:36 下午
  */
 public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M,T> implements BaseService<T> {
 
