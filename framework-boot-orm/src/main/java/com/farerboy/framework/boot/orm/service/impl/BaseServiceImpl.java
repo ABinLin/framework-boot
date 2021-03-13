@@ -60,6 +60,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M,T
         return AbstractDefaultColumnContext.newInstance(cls);
     }
 
+    @Deprecated
     @Override
     public T getById(Serializable id){
         return super.getById(id);
@@ -67,8 +68,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M,T
 
     @Override
     public T getById(Class<T> cls, Serializable id) {
-        QueryWrapper wrapper = AbstractDefaultColumnContext.getIdQueryWrapper(cls,id);
-        getOne(wrapper);
-        return null;
+        QueryWrapper<T> wrapper = AbstractDefaultColumnContext.getIdQueryWrapper(cls,id);
+        return getOne(wrapper);
     }
 }

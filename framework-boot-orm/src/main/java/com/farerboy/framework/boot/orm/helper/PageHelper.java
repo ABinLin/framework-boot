@@ -2,6 +2,7 @@ package com.farerboy.framework.boot.orm.helper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.farerboy.framework.boot.orm.param.BasePageParam;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -13,6 +14,10 @@ public class PageHelper {
 
     private static final String ASC = "asc";
     private static final String DESC = "desc" ;
+
+    public static IPage page(BasePageParam basePageParam){
+        return page(basePageParam.getPageNum(),basePageParam.getPageSize(),basePageParam.getSort(),basePageParam.getOrder());
+    }
 
     public static IPage page(int pageNum, int pageSize, String sort, String order) {
         if(pageNum < 1){

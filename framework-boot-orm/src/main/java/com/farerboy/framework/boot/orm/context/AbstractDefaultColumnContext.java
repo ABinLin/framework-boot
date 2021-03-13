@@ -2,7 +2,9 @@ package com.farerboy.framework.boot.orm.context;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.farerboy.framework.boot.common.exception.BaseException;
 import com.google.common.collect.Maps;
 import org.apache.commons.collections.CollectionUtils;
@@ -101,6 +103,19 @@ public abstract class AbstractDefaultColumnContext {
 
     public static QueryWrapper getBaseQueryWrapper(Class<?> cls) {
         QueryWrapper wrapper = new QueryWrapper();
+        Map<String,Object> map = getBaseColumn(cls);
+        Set<String> keySet = map.keySet();
+        if(CollectionUtils.isEmpty(keySet)){
+            return wrapper;
+        }
+        for(String key : keySet){
+            wrapper.eq(key,map.get(key));
+        }
+        return wrapper;
+    }
+
+    public static UpdateWrapper getBaseUpdateWrapper(Class<?> cls){
+        UpdateWrapper wrapper = new UpdateWrapper();
         Map<String,Object> map = getBaseColumn(cls);
         Set<String> keySet = map.keySet();
         if(CollectionUtils.isEmpty(keySet)){
