@@ -60,6 +60,15 @@ farerboy:
   swagger:
     scan-base-package: com.farerboy.framework.boot.test.controller
 #    scan-annotation: org.springframework.web.bind.annotation.PostMapping
+  server:
+    sdk:
+      huawei:
+        sms:
+          app-key: K1N1o92le1qgI5thyoo91G5l1Hdv
+          app-secret: x9fmpTvi61NB4h30d2Kxm96Wmjo0
+          sender: 8819111210116
+          templateid: 888f8200f48c4e259b2b22cdd5954879
+          signature: 金饭碗
 #  rest:
 #    api:
 #      sign-enable: false

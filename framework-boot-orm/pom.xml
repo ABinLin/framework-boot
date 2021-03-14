@@ -5,7 +5,7 @@
     <parent>
         <artifactId>framework-boot</artifactId>
         <groupId>com.farerboy</groupId>
-        <version>0.0.7</version>
+        <version>0.0.8</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -76,10 +76,7 @@
             <artifactId>mybatis-generator-core</artifactId>
         </dependency>
         <!--  mybatis over -->
-        <dependency>
-            <groupId>com.farerboy</groupId>
-            <artifactId>framework-boot-util</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.farerboy</groupId>
             <artifactId>framework-boot-core</artifactId>

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>framework-boot</artifactId>
         <groupId>com.farerboy</groupId>
-        <version>0.0.7</version>
+        <version>0.0.8</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -46,11 +46,6 @@
         </developer>
     </developers>
     <dependencies>
-        <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
-            <version>5.6.7</version>
-        </dependency>
         <dependency>
             <groupId>com.farerboy</groupId>
             <artifactId>framework-boot-util</artifactId>
