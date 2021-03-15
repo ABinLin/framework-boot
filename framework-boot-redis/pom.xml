@@ -7,13 +7,29 @@
         <groupId>com.farerboy</groupId>
         <version>0.0.8</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>framework-boot-util</artifactId>
+
+    <artifactId>framework-boot-redis</artifactId>
     <packaging>jar</packaging>
-    <name>framework-boot-util</name>
+    <name>framework-boot-redis</name>
     <url>https://github.com/ABinLin/framework-boot</url>
     <description>Development of scaffold based on springboot</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.farerboy</groupId>
+            <artifactId>framework-boot-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+    </dependencies>
 
     <licenses>
         <license>
@@ -45,40 +61,7 @@
             <timezone>+8</timezone>
         </developer>
     </developers>
-    <dependencies>
-        <dependency>
-            <groupId>com.farerboy</groupId>
-            <artifactId>framework-boot-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-    </dependencies>
+
     <profiles>
         <profile>
             <id>ossrh</id>
