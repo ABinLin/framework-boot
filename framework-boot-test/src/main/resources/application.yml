@@ -17,7 +17,7 @@ spring:
       enabled: true
       charset: UTF-8
   application:
-    name: oa
+    name: farerboy
 server:
   port: 8080
   tomcat:
