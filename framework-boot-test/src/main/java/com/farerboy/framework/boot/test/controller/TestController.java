@@ -2,6 +2,7 @@ package com.farerboy.framework.boot.test.controller;
 
 import com.farerboy.framework.boot.common.dto.ServerResponse;
 import com.farerboy.framework.boot.server.sdk.huawei.sms.SmsService;
+import com.farerboy.framework.boot.server.sdk.kuaidi100.Kuaidi100Service;
 import com.farerboy.framework.boot.test.params.TestConvertParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +42,13 @@ public class TestController {
         smsService.sendVerificationCode(phone);
         return ServerResponse.createBySuccess();
 
+    }
+
+    @Autowired
+    private Kuaidi100Service kuaidi100Service;
+
+    @GetMapping("query")
+    public ServerResponse query(String com,String code,String phone){
+        return ServerResponse.createBySuccess(kuaidi100Service.query(com,code,phone));
     }
 }
