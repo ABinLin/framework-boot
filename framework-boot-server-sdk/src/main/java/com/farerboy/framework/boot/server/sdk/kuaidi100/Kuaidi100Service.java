@@ -42,7 +42,7 @@ public class Kuaidi100Service {
         return jsonObject;
     }
 
-    private JSONObject autoComNum(String code) {
+    public JSONObject autoComNum(String code) {
         if(code == null || "".equals(code.trim())){
             return null;
         }
